@@ -58,7 +58,7 @@ autoload -U colors && colors
 prompt_status() {
   local symbols
   symbols=()
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}$GEARS"
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{blue}%}$GEARS"
 
   echo "$symbols"
 }
@@ -71,27 +71,5 @@ setopt PROMPT_SUBST
 
 precmd() {
   RPROMPT="$(git_custom_status)"
-  PROMPT="$(user_status)%B%{$fg[cyan]%}%~% %(?.%{$fg[green]%}.%{$fg[red]%}) $%b "
+  PROMPT="$(user_status)%B%{%F{#1e81b0}%}%~% %(?.%{$fg[green]%}.%{$fg[red]%}) $%b %{%F{none}%}"
 }
-
-# RPROMPT="${rprompt}"
-# PROMPT="$prompt"
-
-
-# RPROMPT=$(git_custom_status)
-# PROMPT="$(user_status)%B%{$fg[cyan]%}%~% %(?.%{$fg[green]%}.%{$fg[red]%}) $%b "
-
-
-# function pipestatus_parse {
-#   PIPESTATUS="$pipestatus"
-#   ERROR=0
-#   for i in "${(z)PIPESTATUS}"; do
-#       if [[ "$i" -ne 0 ]]; then
-#           ERROR=1
-#       fi
-#   done
-
-#   if [[ "$ERROR" -ne 0 ]]; then
-#       print "[%{$fg[red]%}$PIPESTATUS%{$fg[cyan]%}]"
-#   fi
-# }
