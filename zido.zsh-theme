@@ -48,9 +48,9 @@ git_status_icons() {
 
 # Customized git status, oh-my-zsh currently does not allow render dirty status before branch
 git_custom_status() {
-  local branch=$(git_current_branch)
-  [[ -n "$branch" ]] || return 0
-  echo "${ZSH_THEME_GIT_PROMPT_PREFIX}$(git_remote_status) ${GIT_BRANCH} ${branch}$(git_status_icons)${ZSH_THEME_GIT_PROMPT_SUFFIX}"
+  local current_branch=$(git_current_branch)
+  [[ -n "$current_branch" ]] || return 0
+  echo "${ZSH_THEME_GIT_PROMPT_PREFIX}$(git_remote_status) ${GIT_BRANCH} ${current_branch}$(git_status_icons)${ZSH_THEME_GIT_PROMPT_SUFFIX}"
 }
 autoload -U colors && colors
 
